@@ -1,23 +1,25 @@
+'use client'
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react'
-import logo from '@public/logo.png'
+import logo from '../../../public/actuallogo.png'
 import { BsEnvelopeAt, BsInfoSquare } from 'react-icons/bs';
 import { FaRedhat, FaTshirt } from 'react-icons/fa';
 import { SlHome } from 'react-icons/sl';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const Sidebar = ({ show, setter }:any) => {
-    const router = useRouter();
 
+    const pathname = usePathname()
 
-    const className = "bg-black w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
+    const className = "bg-customPrimary-dark w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
     // Append class based on state of sidebar visiblity
     const appendClass = show ? " ml-0" : " ml-[-250px] md:ml-0";
 
 
     const MenuItem = ({ icon, name, route }:any) => {
         // Highlight menu item based on currently displayed route
-        const colorClass = router.pathname === route ? "text-white" : "text-white/50 hover:text-white";
+        const colorClass = pathname === route ? "text-white" : "text-white/50 hover:text-white";
 
         return (
             <Link
@@ -25,12 +27,12 @@ const Sidebar = ({ show, setter }:any) => {
                 onClick={() => {
                     setter((oldVal:any) => !oldVal);
                 }}
-                className={`flex gap-1 [&>*]:my-auto text-md pl-6 py-3 border-b-[1px] border-b-white/10 ${colorClass}`}
+                className={`flex gap-2 [&>*]:my-auto text-md pl-6 py-3 border-b-[1px] border-customPrimary-primarylight/10 ${colorClass}`}
             >
                 <div className="text-xl flex [&>*]:mx-auto w-[30px]">
                     {icon}
                 </div>
-                <div>{name}</div>
+                <div className='text-customPrimary-secondarylight'>{name}</div>
             </Link>
         )
     }
@@ -49,13 +51,13 @@ const Sidebar = ({ show, setter }:any) => {
   return (
     <>
     <div className={`${className}${appendClass}`}>
-    <div className="p-2 flex">
+    <div className="p-2 flex ">
                     <Link href="/">
-                        <img src={logo.src} alt=" Logo" width={300} height={300} />
+                        <Image src={logo.src} alt=" Logo" width={180} height={100} />
                     </Link>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-3">
                     <MenuItem
                         name="Home"
                         route="/"

@@ -1,9 +1,10 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import { FiMenu as Icon } from 'react-icons/fi'
 import { FaUser } from 'react-icons/fa'
 
-import logo from '@/img/logo.svg'
+import logo from '../../../public/logo.png'
 
 export default function MenuBarMobile({ setter }:any) {
     return (
