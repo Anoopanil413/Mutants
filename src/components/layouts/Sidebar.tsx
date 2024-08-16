@@ -12,9 +12,9 @@ const Sidebar = ({ show, setter }:any) => {
 
     const pathname = usePathname()
 
-    const className = "bg-customPrimary-dark w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
+    const className = "bg-customPrimary-dark w-auto sm:min-w-[200px] md:min-w-[300px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
     // Append class based on state of sidebar visiblity
-    const appendClass = show ? " ml-0" : " ml-[-250px] md:ml-0";
+    const appendClass = show ? " ml-0" : " ml-[-200px] md:ml-0";
 
 
     const MenuItem = ({ icon, name, route }:any) => {
