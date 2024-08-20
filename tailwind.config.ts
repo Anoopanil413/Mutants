@@ -13,7 +13,7 @@ const config: Config = {
       colors:{
         customBg:{
           bgcoldark:'#575151',
-          bgcollight:'#fae0de',
+          bgcollight:'#61acf1',
           cont_bg_col_dark:'#292525',
           cont_bg_col_light:'#f5ccc9'
         },

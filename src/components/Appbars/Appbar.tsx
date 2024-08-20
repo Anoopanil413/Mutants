@@ -4,7 +4,7 @@ const Appbar = () => {
   return (
 
     <>
-    <div className='w-full h-200px border border-red-500 border-r-4'>
+    <div className='w-full h-200px  '>
         Heloo
     </div>
     
