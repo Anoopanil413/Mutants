@@ -12,9 +12,11 @@ const Sidebar = ({ show, setter }:any) => {
 
     const pathname = usePathname()
 
-    const className = "bg-customPrimary-dark w-auto sm:min-w-[200px] md:min-w-[300px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
+    const className = " w-auto sm:min-w-[200px] md:min-w-[300px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
     // Append class based on state of sidebar visiblity
     const appendClass = show ? " ml-0" : " ml-[-200px] md:ml-0";
+
+    
 
 
     const MenuItem = ({ icon, name, route }:any) => {
@@ -57,11 +59,11 @@ const Sidebar = ({ show, setter }:any) => {
                     </Link>
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 " >
                     <MenuItem
                         name="Home"
                         route="/"
-                        icon={<SlHome />}
+                        icon={<SlHome className=' dark:text-blue-500 text-black' />}
                     />
                     <MenuItem
                         name="T-Shirts"

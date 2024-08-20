@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 const colors = require('tailwindcss/colors');
 
 const config: Config = {
+   darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,17 +10,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      
       colors:{
+        customBg:{
+          bgcoldark:'#575151',
+          bgcollight:'#fae0de',
+          cont_bg_col_dark:'#292525',
+          cont_bg_col_light:'#f5ccc9'
+        },
         customPrimary: {
           primarylight:'#FF335E',
           secondarylight:'#F33953',
           light: '#feca30', 
           dark: '#1f2937',
-          bgcoldark:'#575151',
-          brcollight:'#fae0de',
-          cont_bg_col_dark:'#292525',
-          cont_br_col_light:'#f5ccc9'
         },
   
       }
