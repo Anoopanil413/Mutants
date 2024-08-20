@@ -52,7 +52,7 @@ const Sidebar = ({ show, setter }:any) => {
 
   return (
     <>
-    <div className={`${className}${appendClass}`}>
+    <div className={`${className}${appendClass} border border-r-1 `}>
     <div className="p-2 flex ">
                     <Link href="/">
                         <Image src={logo.src} alt=" Logo" width={180} height={100} />
