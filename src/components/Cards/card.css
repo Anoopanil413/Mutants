@@ -1,0 +1,10 @@
+
+.quarter_circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 100% 0 0 0;
+    background: blue; 
+    background: blue;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  
