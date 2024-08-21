@@ -19,16 +19,17 @@ body {
 }
 
 :root {
-  --background-color: #ccdff0; 
-  --text-color: #333333; 
+  --background-color: #dae6f0; 
+  --text-color: #601FB1; 
 }
 
 .dark {
-  --background-color: #333333; 
-  --text-color: #ffffff;
+  --background-color: #443e3e; 
+  --text-color: #FF335E;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
+

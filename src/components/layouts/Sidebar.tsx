@@ -7,10 +7,13 @@ import { FaRedhat, FaTshirt } from 'react-icons/fa';
 import { SlHome } from 'react-icons/sl';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import lightlogo from '../../../public/lightlogo.png'
+import { useTheme } from 'next-themes';
 
 const Sidebar = ({ show, setter }:any) => {
 
     const pathname = usePathname()
+     const {theme}= useTheme()
 
     const className = " w-auto sm:min-w-[200px] md:min-w-[300px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40";
     // Append class based on state of sidebar visiblity
@@ -20,8 +23,7 @@ const Sidebar = ({ show, setter }:any) => {
 
 
     const MenuItem = ({ icon, name, route }:any) => {
-        // Highlight menu item based on currently displayed route
-        const colorClass = pathname === route ? "text-white" : "text-white/50 hover:text-white";
+        const colorClass = pathname === route ? "text-white bg-custom-primarylight/5 dark:bg-custom-primarydark/5" : "text-white/50 hover:text-white hover:font-thin";
 
         return (
             <Link
@@ -29,12 +31,12 @@ const Sidebar = ({ show, setter }:any) => {
                 onClick={() => {
                     setter((oldVal:any) => !oldVal);
                 }}
-                className={`flex gap-2 [&>*]:my-auto text-md pl-6 py-3 border-b-[1px] border-customPrimary-primarylight/10 ${colorClass}`}
+                className={`flex gap-2 [&>*]:my-auto text-md pl-6 py-3 border-b-[1px] border-custom-primarylight/30 dark:border-custom-primarydark/10 ${colorClass}`}
             >
                 <div className="text-xl flex [&>*]:mx-auto w-[30px]">
                     {icon}
                 </div>
-                <div className='text-customPrimary-secondarylight'>{name}</div>
+                <div  className='dark:text-custom-primarydark text-custom-primarylight '>{name}</div>
             </Link>
         )
     }
@@ -42,7 +44,7 @@ const Sidebar = ({ show, setter }:any) => {
 
     const ModalOverlay = () => (
         <div
-            className={`flex md:hidden fixed top-0 right-0 bottom-0 left-0 bg-black/50 z-30`}
+            className={`flex md:hidden fixed top-0 right-0 bottom-0 left-0  z-30`}
             onClick={() => {
                 setter((oldVal:any) => !oldVal);
             }}
@@ -52,38 +54,38 @@ const Sidebar = ({ show, setter }:any) => {
 
   return (
     <>
-    <div className={`${className}${appendClass} border border-r-1 `}>
-    <div className="p-2 flex ">
-                    <Link href="/">
-                        <Image src={logo.src} alt=" Logo" width={180} height={100} />
+    <div className={`${className}${appendClass} bg-black md:bg-inherit border-r-[1px]   border-r-custom-primarylight/35 dark:border-r-custom-primarydark/10 `}>
+    <div className="p-2 flex dark:bg-custom-primarydark/5 bg-custom-primarylight/5">
+                    <Link href="/" >
+                        <Image src={theme == 'light' ? lightlogo.src : logo.src} alt=" Logo" width={180} height={100} />
                     </Link>
                 </div>
 
-                <div className="flex flex-col gap-3 " >
+                <div className="flex flex-col gap-3  dark:border-t-customBg-bgcoldark border-t-customBg-bgcollight" >
                     <MenuItem
                         name="Home"
                         route="/"
-                        icon={<SlHome className=' dark:text-blue-500 text-black' />}
+                        icon={<SlHome className=' dark:text-custom-primarydark text-custom-primarylight' />}
                     />
                     <MenuItem
                         name="T-Shirts"
                         route="/t-shirts"
-                        icon={<FaTshirt />}
+                        icon={<FaTshirt className=' dark:text-custom-primarydark text-custom-primarylight'/>}
                     />
                     <MenuItem
                         name="Hats"
                         route="/hats"
-                        icon={<FaRedhat />}
+                        icon={<FaRedhat className=' dark:text-custom-primarydark text-custom-primarylight'/>}
                     />
                     <MenuItem
                         name="About Us"
                         route="/about"
-                        icon={<BsInfoSquare />}
+                        icon={<BsInfoSquare className=' dark:text-custom-primarydark text-custom-primarylight'/>}
                     />
                     <MenuItem
                         name="Contact"
                         route="/contact"
-                        icon={<BsEnvelopeAt />}
+                        icon={<BsEnvelopeAt className=' dark:text-custom-primarydark text-custom-primarylight'/>}
                     />
                 </div>
                 {show ? <ModalOverlay /> : <></>}

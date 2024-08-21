@@ -1,27 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
+const ThemeProvider = ({showIcon}:{showIcon:boolean}) => {
+    const { theme, setTheme, resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
-const ThemeProvider = () => {
-    const { theme, setTheme } = useTheme();
     const toggleTheme = () => {
-        console.log('theme',theme)
         setTheme(theme === 'light' ? 'dark' : 'light');
-      };
+    };
 
-      useEffect(() => {
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-      }, [theme]);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
-  return (
-    <div className='flex justify-center items-center gap-6 border border-red-400 '>
-        <FontAwesomeIcon icon={faChevronLeft} className='w-7 h-7'/>
-        <button onClick={toggleTheme}>{theme === 'light'?<FontAwesomeIcon icon={faMoon} className='w-7 h-7' />: <FontAwesomeIcon icon={faSun} className='w-7 h-7' />}</button>
+    useEffect(() => {
+        if (mounted) {
+            document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
+        }
+    }, [resolvedTheme, mounted]);
 
-    </div>
-  )
-}
+    if (!mounted) return null; 
 
-export default ThemeProvider
+    return (
+        <div className='flex justify-center items-center gap-6 '>
+           {!showIcon && <FontAwesomeIcon icon={faChevronLeft} className='w-5 h-5 md:w-7 md:h-7 animate-blink' />}
+           {showIcon && <FontAwesomeIcon icon={faChevronRight} className='w-5 h-5 md:w-7 md:h-7 animate-blink' />}
+            <button onClick={toggleTheme}>
+                {theme === 'light' ? (
+                    <FontAwesomeIcon icon={faMoon} className='w-5 h-5 md:w-7 md:h-7' />
+                ) : (
+                    <FontAwesomeIcon icon={faSun} className='w-5 h-5 md:w-7 md:h-7' />
+                )}
+            </button>
+        </div>
+    );
+};
+
+export default ThemeProvider;

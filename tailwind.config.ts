@@ -11,20 +11,31 @@ const config: Config = {
   theme: {
     extend: {
       colors:{
+
         customBg:{
-          bgcoldark:'#575151',
-          bgcollight:'#61acf1',
+          bgcoldark:'#443e3e',
+          bgcollight:'#dae6f0',
           cont_bg_col_dark:'#292525',
           cont_bg_col_light:'#f5ccc9'
         },
-        customPrimary: {
-          primarylight:'#FF335E',
-          secondarylight:'#F33953',
+        custom: {
+          primarydark:'#FF335E',
+          primarylight:'#601FB1',
           light: '#feca30', 
           dark: '#1f2937',
         },
   
-      }
+      },
+
+      keyframes: {
+        blink: {
+          '0%, 100%': { 'opacity': '1' },
+          '50%': { 'opacity': '0' },
+        },
+      },
+      animation: {
+        blink: 'blink 2.5s infinite',
+      },
     },
 
   },
