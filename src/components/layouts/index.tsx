@@ -34,14 +34,16 @@ export default function Layout({ pageTitle, children }:any) {
             <div className="flex">
                     <MenuBarMobile setter={setShowSidebar} />
                     <Sidebar show={showSidebar} setter={setShowSidebar} />
-                    <div className="flex flex-col flex-grow w-screen md:w-full min-h-screen relative mainbgsetter" >
+                    <div className="flex flex-col flex-grow w-screen md:w-full min-h-screen relative mainbgsetter " >
                         <Image src={bgimg3} alt='*' className='opacity-5 absolute z-10 w-[100%] h-[100%]'/> 
                         <Image src={bgimg4} alt='*' className='opacity-5 absolute z-10 w-[30%] h-[30%] top-32 right-4'/> 
                         <Image src={bgimg5} alt='*' className='opacity-5 absolute z-10 w-[30%] h-[30%] bottom-20 left-5'/> 
                         <div className='fixed z-20' style={!themeSetter? {  right: 'calc(-50px)', top:'60px' }:{right: '10px', top:'60px'}} onClick={openThemeSetter}>
                         <ThemeProvider showIcon={themeSetter}/>
                         </div>
+                        <div className='mt-[80px] md:mt-0'>
                         {children}
+                        </div>
                     </div>
                 </div>
             </div>
